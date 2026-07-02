@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ============================================================
+     אוּלְבַּן · דף נחיתה
+     לפני העלאה לאוויר — החליפו את כל מה שמסומן ב־[לעדכן]:
+       ✓ וואטסאפ מעודכן: +972 52-680-5855   ✓ אימייל מעודכן: ulban6ravit@gmail.com
+       ✓ ביקורות: קיר הפתקים בכתב יד (note1.jpg – note8.jpg)
+       נותר להחליף:
+       1. מחיר + תאריכים:  חפשו  [לעדכן]
+     הטופס מחובר ל-Netlify Forms (ראו הערה ליד <form>).
+
+     תמונות: גרסה זו טוענת תמונות מקומיות. הורידו מ-Google Drive והניחו 8 קבצים
+     לצד הקובץ הזה, בשמות המדויקים הבאים (שם המקור ← שם הקובץ):
+       "logo ulban.jpg" ← logo.jpg
+       n8.jpg           ← hero.jpg
+       n3.jpg           ← about.jpg   (משמש כעת גם כרקע דהוי מתחת ל-Hero)
+       n1.jpg           ← g1.jpg
+       n2.jpg           ← g2.jpg
+       n5.jpg           ← g3.jpg
+       n7.jpg           ← g4.jpg
+     ואז גררו את התיקייה כולה (index.html + כל התמונות) ל-Netlify.
+
+     תמונת סקשן "קצת עליי": natheer-class.jpg (n11) — הניחו לצד index.html.
+     תמונת קבוצה בגלריה: class-group.jpg (n14) — הניחו לצד index.html.
+
+     קיר הפתקים בכתב יד: 8 קבצים note1.jpg – note8.jpg (כבר מוכנים, הניחו לצד index.html).
+     רקע סקשן הביקורות: bg-ulban.jpg (חיתוך של פתק أولبان) — גם לצד index.html.
+     וידאו השיעור: doco1_classroom.mp4 (הומר ל-H.264, נגן בכל הדפדפנים) — לצד index.html.
+     ============================================================ -->
+
+<title>אוּלְבַּן · קורס לערבית פלסטינית מדוברת — חיפה ואונליין</title>
+<meta name="description" content="ללמוד לדבר ערבית פלסטינית מדוברת, בביטחון ובגובה העיניים. קורסים פרונטליים בחיפה והסביבה או אונליין בזום, לכל הרמות. השאירו פרטים ונחזור אליכם." />
+
+<!-- Open Graph (לשיתופים ולמודעות ממומנות) -->
+<meta property="og:title" content="אוּלְבַּן · קורס לערבית פלסטינית מדוברת" />
+<meta property="og:description" content="לדבר ערבית מדוברת בביטחון. חיפה ואונליין, לכל הרמות. הצטרפו ל־200+ תלמידים." />
+<meta property="og:image" content="https://ulban.netlify.app/hero.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="he_IL" />
+
+<link rel="icon" href="logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#F1E7D2;        /* limestone / warm sand */
+    --paper-2:#EADDC2;      /* slightly deeper sand for cards */
+    --ink:#143E3A;          /* deep petrol-green, glazed ceramic */
+    --ink-2:#0E2F2C;        /* darker petrol */
+    --ink-soft:#3D5C58;
+    --saffron:#E0A12E;      /* primary accent / CTA */
+    --saffron-deep:#C5841A;
+    --clay:#BC5A3C;         /* terracotta, used sparingly */
+    --turq:#2E9C92;         /* ceramic turquoise pop */
+    --line:rgba(20,62,58,.18);
+    --shadow:0 18px 40px -22px rgba(14,47,44,.55);
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Assistant',system-ui,sans-serif;
+    font-size:clamp(16px,1.05vw,18px);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Frank Ruhl Libre',Georgia,serif;line-height:1.12;font-weight:900;margin:0}
+  .ar{font-family:'Amiri',serif;font-weight:700}
+  p{margin:0 0 1em}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--saffron);color:var(--ink-2)}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(20px,5vw,40px)}
+  .section{padding-block:clamp(64px,9vw,120px)}
+
+  .eyebrow{
+    font-weight:700;font-size:.82rem;letter-spacing:.16em;
+    color:var(--clay);text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:.6em;margin-bottom:1.1em;
+  }
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--clay);display:inline-block}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+    font-family:'Assistant',sans-serif;font-weight:700;font-size:1.05rem;
+    padding:.85em 1.6em;border-radius:999px;border:2px solid transparent;
+    cursor:pointer;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    will-change:transform;
+  }
+  .btn-primary{background:var(--saffron);color:var(--ink-2);box-shadow:0 10px 24px -12px rgba(197,132,26,.9)}
+  .btn-primary:hover{background:var(--saffron-deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .btn-wa{background:#1faf54;color:#fff;box-shadow:0 10px 24px -12px rgba(31,175,84,.9)}
+  .btn-wa:hover{background:#178f44;transform:translateY(-2px)}
+  .btn-lg{font-size:1.15rem;padding:1em 2em}
+  :focus-visible{outline:3px solid var(--turq);outline-offset:3px;border-radius:6px}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(241,231,210,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+  .brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--saffron)}
+  .brand b{font-family:'Frank Ruhl Libre',serif;font-size:1.45rem;font-weight:900;letter-spacing:.01em}
+  .brand span{font-size:.78rem;color:var(--ink-soft);display:block;margin-top:-3px}
+  .nav-links{display:flex;align-items:center;gap:1.6rem}
+  .nav-links a:not(.btn){text-decoration:none;font-weight:600;color:var(--ink-soft)}
+  .nav-links a:not(.btn):hover{color:var(--ink)}
+  .nav .btn{padding:.55em 1.2em;font-size:.95rem}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding-block:clamp(48px,7vw,90px)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(241,231,210,.74),rgba(241,231,210,.84)),url('about.jpg') center/cover no-repeat}
+  .hero > .wrap{position:relative;z-index:1}
+  .hero-head{max-width:1000px;margin:0 auto clamp(30px,5vw,52px);text-align:center}
+  .hello-ar{font-family:'Amiri',serif;font-size:1.25rem;color:var(--turq);font-weight:700;display:inline-block;margin-bottom:.7rem}
+  .hero h1{font-size:clamp(1.7rem,4.1vw,2.9rem);line-height:1.5;margin:0;font-weight:400;text-wrap:balance}
+  .hero h1 strong{font-weight:700;color:inherit}
+  .hero-grid{display:grid;grid-template-columns:1fr .8fr;gap:clamp(32px,5vw,60px);align-items:center}
+  .hero .lead{font-size:clamp(1.08rem,1.5vw,1.25rem);color:var(--ink-soft);max-width:48ch;margin-bottom:1.6em}
+  .hero .lead strong{color:var(--ink);font-weight:700}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem}
+
+  /* arch frame — the signature: a doorway into the language */
+  .arch{
+    position:relative;
+    border-radius:46% 46% 14px 14px / 30% 30% 14px 14px;
+    overflow:hidden;border:6px solid var(--ink);
+    box-shadow:var(--shadow);background:var(--ink);
+  }
+  .arch img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+  .hero-arch{max-width:440px;margin-inline:auto}
+  .hero-arch::after{
+    content:"";position:absolute;inset:6px;border-radius:inherit;
+    border:1px solid rgba(241,231,210,.35);pointer-events:none;
+  }
+
+  /* ---------- arcade divider (repeating arches) ---------- */
+  .arcade{display:block;width:100%;height:34px;color:var(--ink);opacity:.5}
+  .arcade.gold{color:var(--saffron);opacity:.9}
+
+  /* ---------- trust bar ---------- */
+  .trust{background:var(--ink);color:var(--paper)}
+  .trust .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(1.2rem,4vw,3.4rem);padding-block:1.4rem;text-align:center}
+  .trust .stat b{font-family:'Frank Ruhl Libre',serif;font-size:1.7rem;font-weight:900;color:var(--saffron);display:block;line-height:1}
+  .trust .stat span{font-size:.92rem;opacity:.85}
+
+  /* ---------- methodology ---------- */
+  .head{max-width:60ch}
+  .head h2{font-size:clamp(2rem,3.6vw,3rem);margin-bottom:.3em}
+  .head p{color:var(--ink-soft);font-size:1.15rem}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,34px);margin-top:clamp(36px,5vw,56px)}
+  .pillar{
+    background:var(--paper-2);border:1px solid var(--line);
+    border-radius:120px 120px 18px 18px;padding:2.4rem 1.8rem 2rem;
+    position:relative;transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .pillar:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .pillar .num{
+    font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:1rem;
+    width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+    background:var(--ink);color:var(--saffron);margin:0 auto 1rem;
+  }
+  .pillar h3{font-size:1.7rem;text-align:center;margin-bottom:.5em}
+  .pillar h3 .ar{display:block;font-size:1.1rem;color:var(--turq);font-weight:700;margin-top:.15em}
+  .pillar p{color:var(--ink-soft);text-align:center;font-size:1.02rem;margin:0}
+
+  /* ---------- about (dark) ---------- */
+  .about{background:var(--ink);color:var(--paper)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,60px);align-items:center}
+  .about .eyebrow{color:var(--saffron)}
+  .about .eyebrow::before{background:var(--saffron)}
+  .about h2{color:var(--paper);font-size:clamp(2rem,3.6vw,3rem);margin-bottom:.5em}
+  .about p{color:rgba(241,231,210,.82);font-size:1.1rem}
+  .about .arch{border-color:var(--saffron)}
+  .about-arch{margin-inline:auto;max-width:560px;border-radius:34% 34% 14px 14px / 22% 22% 14px 14px}
+  .about-arch img{aspect-ratio:16/10}
+  .ulban-note{
+    margin-top:1.4rem;padding:1rem 1.3rem;border-radius:14px;
+    background:rgba(224,161,46,.12);border:1px dashed rgba(224,161,46,.5);
+    font-size:1.05rem;color:var(--paper);
+  }
+  .ulban-note b{color:var(--saffron)}
+  /* journey path */
+  .journey{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-top:1.6rem}
+  .journey .stop{display:flex;flex-direction:column;align-items:flex-start}
+  .journey .stop b{font-family:'Frank Ruhl Libre',serif;font-size:1.4rem;color:var(--saffron);line-height:1}
+  .journey .stop span{font-size:.85rem;opacity:.7}
+  .journey .arrow{color:var(--turq);font-size:1.3rem;opacity:.8}
+
+  /* ---------- courses ---------- */
+  .courses-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,30px);margin-top:clamp(36px,5vw,52px)}
+  .course{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .course:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .course .tag{background:var(--ink);color:var(--paper);font-weight:700;font-size:.85rem;letter-spacing:.05em;padding:.5em 1.3em}
+  .course .tag.online{background:var(--turq);color:#06302c}
+  .course .body{padding:1.8rem;display:flex;flex-direction:column;flex:1}
+  .course h3{font-size:1.7rem;margin-bottom:.7rem}
+  .course ul{list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.55rem}
+  .course li{display:flex;gap:.6em;color:var(--ink-soft);font-size:1.02rem}
+  .course li::before{content:"";flex:0 0 8px;height:8px;margin-top:.6em;border-radius:50%;background:var(--saffron)}
+  .course .btn{margin-top:auto}
+  .levels-note{
+    text-align:center;margin-top:2rem;font-size:1.08rem;color:var(--ink-soft);
+  }
+  .levels-note b{color:var(--ink)}
+  .levels-note a{color:var(--clay);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+  /* ---------- testimonials ---------- */
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.5vw,26px);margin-top:clamp(36px,5vw,52px)}
+  .quote{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
+    padding:1.8rem 1.9rem;position:relative;
+  }
+  .quote::before{
+    content:"\201D";font-family:'Frank Ruhl Libre',serif;color:var(--saffron);
+    font-size:4rem;line-height:.4;position:absolute;top:1.2rem;inset-inline-start:1.4rem;opacity:.55;
+  }
+  .quote p{font-size:1.12rem;color:var(--ink);padding-top:1.3rem;margin-bottom:1rem}
+  .quote .who{display:flex;align-items:center;gap:.7rem;color:var(--ink-soft);font-weight:600;font-size:.95rem}
+  .quote .who .dot{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--saffron);display:grid;place-items:center;font-family:'Frank Ruhl Libre',serif;font-weight:900}
+  .ph-flag{display:inline-block;background:var(--clay);color:#fff;font-size:.72rem;font-weight:700;border-radius:4px;padding:.1em .5em;margin-inline-start:.4em;vertical-align:middle}
+
+  /* ---------- handwritten notes wall ---------- */
+  .notes-section{position:relative;background:var(--ink);color:var(--paper)}
+  .notes-section::before{content:"";position:absolute;inset:0;z-index:0;background:url('bg-ulban.jpg') center/cover no-repeat;mix-blend-mode:soft-light;opacity:.6;pointer-events:none}
+  .notes-section > .wrap{position:relative;z-index:1}
+  .notes-section .eyebrow{color:var(--saffron)}
+  .notes-section .eyebrow::before{background:var(--saffron)}
+  .notes-section .head h2{color:var(--paper)}
+  .notes-section .head p{color:rgba(241,231,210,.82);font-size:1.12rem}
+  .notes-wall{columns:3;column-gap:clamp(16px,2.2vw,26px);margin-top:clamp(34px,5vw,52px)}
+  .note{display:block;width:100%;margin:0 0 clamp(16px,2.2vw,26px);padding:10px 10px 14px;border:0;cursor:pointer;background:#fbf7ee;border-radius:3px;box-shadow:0 12px 28px -12px rgba(0,0,0,.55);break-inside:avoid;position:relative;transform:rotate(var(--rot,0deg));transition:transform .22s ease,box-shadow .22s ease}
+  .note img{width:100%;display:block;border-radius:2px}
+  .note::before{content:"";position:absolute;top:-9px;left:50%;width:74px;height:24px;background:rgba(224,161,46,.30);border:1px solid rgba(224,161,46,.26);border-radius:2px;transform:translateX(-50%) rotate(-3deg)}
+  .note:nth-child(2n)::before{transform:translateX(-50%) rotate(4deg);width:58px}
+  .note:nth-child(3n)::before{transform:translateX(-50%) rotate(-6deg)}
+  .note:hover{transform:rotate(0) scale(1.04);box-shadow:0 24px 46px -14px rgba(0,0,0,.6);z-index:3}
+  .note:focus-visible{transform:rotate(0) scale(1.04);outline:none;box-shadow:0 0 0 3px var(--saffron),0 24px 46px -14px rgba(0,0,0,.6);z-index:3}
+  .notes-hint{text-align:center;margin-top:1.5rem;color:rgba(241,231,210,.7);font-size:.98rem}
+  /* lightbox */
+  .lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(10,33,31,.93);padding:clamp(14px,4vw,48px)}
+  .lightbox.open{display:flex}
+  .lb-figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:.9rem;max-width:min(92vw,880px)}
+  .lb-figure img{max-width:100%;max-height:80vh;object-fit:contain;background:#fbf7ee;padding:12px;border-radius:4px;box-shadow:0 30px 70px -20px rgba(0,0,0,.85)}
+  .lb-figure figcaption{color:var(--paper);opacity:.8;font-size:.95rem;letter-spacing:.05em}
+  .lb-btn{position:absolute;background:rgba(241,231,210,.14);color:var(--paper);border:1px solid rgba(241,231,210,.3);border-radius:50%;width:48px;height:48px;font-size:1.4rem;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .15s ease}
+  .lb-btn:hover{background:rgba(241,231,210,.28)}
+  .lb-close{top:clamp(12px,3vw,26px);inset-inline-end:clamp(12px,3vw,26px)}
+  .lb-nav{top:50%;transform:translateY(-50%)}
+  .lb-prev{inset-inline-start:clamp(8px,2vw,24px)}
+  .lb-next{inset-inline-end:clamp(8px,2vw,24px)}
+
+  /* ---------- faq ---------- */
+  .faq-list{max-width:760px;margin:clamp(30px,4vw,48px) auto 0}
+  details{border-bottom:1px solid var(--line);padding:1.1rem 0}
+  summary{
+    cursor:pointer;list-style:none;font-family:'Frank Ruhl Libre',serif;font-weight:700;
+    font-size:1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--saffron);font-size:1.6rem;font-weight:400;transition:transform .2s ease}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--ink-soft);margin:.8rem 0 0;font-size:1.05rem}
+
+  /* ---------- final CTA + form (dark) ---------- */
+  .cta{background:var(--ink);color:var(--paper);position:relative}
+  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,64px);align-items:center}
+  .cta h2{color:var(--paper);font-size:clamp(2.1rem,4vw,3.2rem);margin-bottom:.4em}
+  .cta .lead{color:rgba(241,231,210,.82);font-size:1.18rem;margin-bottom:1.6rem}
+  .cta .wa-line{margin-top:1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+  .cta .wa-line span{opacity:.8}
+
+  form{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(1.6rem,3vw,2.4rem);box-shadow:var(--shadow)}
+  .field{margin-bottom:1.05rem}
+  .field label{display:block;font-weight:700;font-size:.95rem;margin-bottom:.35rem}
+  .field label .req{color:var(--clay)}
+  .field input,.field select,.field textarea{
+    width:100%;font-family:inherit;font-size:1.02rem;color:var(--ink);
+    background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:.8em .9em;transition:border-color .15s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--turq)}
+  .field textarea{resize:vertical;min-height:70px}
+  form .btn{width:100%;margin-top:.4rem}
+  .form-note{font-size:.85rem;color:var(--ink-soft);text-align:center;margin:.9rem 0 0}
+  .hp{position:absolute;left:-9999px}
+  .form-success{display:none;text-align:center;padding:1.5rem 0}
+  .form-success.show{display:block}
+  .form-success .v{width:64px;height:64px;border-radius:50%;background:var(--turq);color:#fff;display:grid;place-items:center;font-size:2rem;margin:0 auto 1rem}
+  .form-success h3{font-size:1.6rem;margin-bottom:.3em}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink-2);color:rgba(241,231,210,.75);padding-block:2.4rem}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem}
+  footer .brand b{color:var(--paper)}
+  footer .f-links{display:flex;gap:1.4rem;flex-wrap:wrap}
+  footer a{text-decoration:none;font-weight:600}
+  footer a:hover{color:var(--saffron)}
+  .copyright{width:100%;border-top:1px solid rgba(241,231,210,.14);margin-top:1.4rem;padding-top:1.4rem;font-size:.85rem;opacity:.7}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- gallery (arched photo strip) ---------- */
+  .gallery-video{max-width:680px;margin:clamp(34px,5vw,52px) auto 0;border-radius:34% 34% 14px 14px / 20% 20% 14px 14px}
+  .gallery-video video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000}
+  .gallery-wide{max-width:680px;margin:clamp(18px,2.5vw,26px) auto 0;border-radius:34% 34% 14px 14px / 20% 20% 14px 14px}
+  .gallery-wide img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(18px,2.5vw,26px)}
+  .gallery-grid .arch{border-width:5px;border-radius:42% 42% 12px 12px / 22% 22% 12px 12px}
+  .gallery-grid .arch img{aspect-ratio:3/4}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:880px){
+    .hero-grid,.about-grid,.cta-grid{grid-template-columns:1fr}
+    .hero-arch{max-width:340px;margin-inline:auto}
+    .about-arch{max-width:460px}
+    .pillars,.courses-grid,.quotes{grid-template-columns:1fr}
+    .gallery-grid{grid-template-columns:1fr 1fr}
+    .notes-wall{columns:2}
+    .nav-links a:not(.btn){display:none}
+  }
+  @media (max-width:480px){
+    .nav .btn span.full{display:none}
+    .brand span{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important}
+    .reveal{opacity:1;transform:none;transition:none}
+    .btn,.pillar,.course{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <!-- logo ulban.jpg --><img src="logo.jpg" alt="לוגו אולבן" />
+      <span style="display:flex;flex-direction:column">
+        <b>אוּלְבַּן</b>
+        <span>ערבית פלסטינית מדוברת</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#method">איך לומדים</a>
+      <a href="#about">קצת עליי</a>
+      <a href="#courses">הקורסים</a>
+      <a href="#register" class="btn btn-primary"><span class="full">השאירו פרטים</span><span style="display:none" aria-hidden="true">הרשמה</span>הרשמה</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-head reveal">
+      <span class="hello-ar">أهلاً وسهلاً</span>
+      <h1>ללמוד <strong>עַבַר</strong>, הווה ועתיד <strong>עִבְר</strong>יים-<strong>ערב</strong>יים<br />ולֵדַבֵּר את הַּשַפַה הַּ<strong>עַרַבִ</strong>יתְ.</h1>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <p class="lead">הקורסים של בית ספר האוּלְבַּןְ הם קורסים בשלוש רמות: מתחילים, ממשיכים ומתקדמים. בכל מפגש של כל קורס, בכל רמה, אנחנו שואפים לשלב שלושה דברים:<br /><strong>למידה</strong><br /><strong>חזרה</strong><br />ו<strong>דיבור</strong>.</p>
+        <div class="hero-cta">
+          <a href="#register" class="btn btn-primary btn-lg">השאירו פרטים ונחזור אליכם</a>
+          <a href="https://wa.me/972526805855" class="btn btn-wa btn-lg" target="_blank" rel="noopener">שיחה בוואטסאפ</a>
+        </div>
+      </div>
+      <div class="reveal hero-arch arch">
+        <!-- n8.jpg --><img src="hero.jpg" alt="נאד'יר מלמד ערבית מדוברת באולבן" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- arcade divider -->
+<svg class="arcade gold" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,38 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0" fill="none" stroke="currentColor" stroke-width="2.5"/>
+</svg>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="trust">
+  <div class="wrap">
+    <div class="stat"><b>+200</b><span>תלמידים מדברים</span></div>
+    <div class="stat"><b>+10</b><span>שנות הוראה</span></div>
+    <div class="stat"><b>3</b><span>רמות — מאפס ועד שטף</span></div>
+    <div class="stat"><b>חיפה · זום</b><span>פרונטלי או אונליין</span></div>
+  </div>
+</section>
+
+<!-- ============ METHODOLOGY ============ -->
+<section class="section" id="method">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">איך לומדים באוּלְבַּן</span>
+      <h2>כל מפגש משלב שלושה דברים.</h2>
+      <p>לא רק לשנן מילים — אלא לבנות שפה שמלווה אתכם בין מפגש למפגש, עד שהיא מקיפה את החיים.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="num">١</div>
+        <h3>למידה<span class="ar">تَعَلُّم</span></h3>
+        <p>מפגש שבועי בן שעתיים. לפי הרמה — דקדוק, תחביר, זמני פועל וצורות, ביטויים ומושגים מהערבית הפלסטינית המדוברת. מ־עַרָבּ אִל־עַרָאמְשֵה בצפון ועד אִם בַּטִין בדרום.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">٢</div>
+        <h3>חזרה<span class="ar">مُراجَعة</span></h3>
+        <p>בין מפגש למפגש שולח סיכומים והקלטות של משפטים, סיפורים ושירים. אפשר להעמיק בכל נושא בקצב שלכם — וכך השפה נכנסת לאט־לאט לתוך היום־יום.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">٣</div>
+        <h3>דיבור<span class="ar">مُحادَثة</span></h3>
+        <p>בהתחלה מדברים אל הקיר הכי יפה שיש בסביבה. אחר כך — אליי, בכל דרך שנוחה לכם. ובסוף — יחד, במפגשים הקבוצתיים.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap section about-grid">
+    <div class="reveal about-arch arch">
+      <!-- natheer-class.jpg (n11) --><img src="natheer-class.jpg" alt="נאד'יר מלמד ערבית מול הלוח, בשיעור" />
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">קצת עליי</span>
+      <h2>נאד'יר טאהא — מורה, מתרגם, ואבא לשתי שפות.</h2>
+      <p>אני בן 40, מלמד ומתרגם ערבית ועברית — וחי את שתיהן ביום־יום, ומגדל איתן ילדה. מעל עשר שנים שאני מלמד ערבית פלסטינית מדוברת לכל הרמות, הגילאים, ומכל רחבי הארץ.</p>
+      <p>האוּלְבַּן שלי הוא בית לכל גווני הערבית הפלסטינית שאספתי בדרך:</p>
+      <div class="journey">
+        <div class="stop"><b>ירושלים</b><span>שם הכול התחיל</span></div>
+        <span class="arrow">←</span>
+        <div class="stop"><b>יפו</b><span>أُمّ الغريب</span></div>
+        <span class="arrow">←</span>
+        <div class="stop"><b>חיפה</b><span>שם הכול מתמזג</span></div>
+      </div>
+      <div class="ulban-note"><b>אוּלְבַּן?</b> כמו אוּלְפָּן — רק שכאן לומדים ערבית. שפה נועדה לחבר בין אנשים.</div>
+    </div>
+  </div>
+</section>
+
+<!-- arcade divider -->
+<svg class="arcade" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,38 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0 a40,38 0 0 1 80,0" fill="none" stroke="currentColor" stroke-width="2.5"/>
+</svg>
+
+<!-- ============ GALLERY ============ -->
+<section class="section" id="gallery" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="head reveal" style="margin-inline:auto;text-align:center">
+      <span class="eyebrow" style="margin-inline:auto">רגעים מהאוּלְבַּן</span>
+      <h2>ככה זה נראה מבפנים.</h2>
+    </div>
+    <!-- main arch: lesson video (doco1_classroom.mp4 must sit next to index.html) -->
+    <div class="reveal gallery-video arch">
+      <video controls playsinline preload="metadata" poster="hero.jpg">
+        <source src="doco1_classroom.mp4" type="video/mp4" />
+        הדפדפן שלך אינו תומך בהפעלת הווידאו.
+      </video>
+    </div>
+    <div class="gallery-grid">
+      <div class="reveal arch"><!-- n1.jpg --><img src="g1.jpg" alt="שיעור ערבית מדוברת באולבן" loading="lazy" /></div>
+      <div class="reveal arch"><!-- n2.jpg --><img src="g2.jpg" alt="מפגש לימוד באולבן" loading="lazy" /></div>
+      <div class="reveal arch"><!-- n5.jpg --><img src="g3.jpg" alt="נאד'יר עם תלמידים" loading="lazy" /></div>
+      <div class="reveal arch"><!-- n7.jpg --><img src="g4.jpg" alt="לומדים ערבית מדוברת באולבן" loading="lazy" /></div>
+    </div>
+    <div class="reveal gallery-wide arch">
+      <!-- class-group.jpg (n14) --><img src="class-group.jpg" alt="קבוצת תלמידים בשיעור ערבית מדוברת באולבן" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ COURSES ============ -->
+<section class="section" id="courses">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">הקורסים הקרובים</span>
+      <h2>בחרו את הקצב שמתאים לכם.</h2>
+    </div>
+    <div class="courses-grid">
+      <div class="course reveal">
+        <span class="tag online">אונליין · זום</span>
+        <div class="body">
+          <h3>קורס מתחילים</h3>
+          <ul>
+            <li>ימי ראשון, 10:00</li>
+            <li>15 מפגשים בזום</li>
+            <li>לאלה שמתחילים מאפס</li>
+            <li>המחזור הבא נפתח בקרוב — <strong>[לעדכן תאריך]</strong></li>
+          </ul>
+          <a href="#register" class="btn btn-primary">להשארת פרטים</a>
+        </div>
+      </div>
+      <div class="course reveal">
+        <span class="tag">פרונטלי · חיפה</span>
+        <div class="body">
+          <h3>קורס ממשיכים</h3>
+          <ul>
+            <li>ימי חמישי, 18:30</li>
+            <li>15 מפגשים פרונטליים</li>
+            <li>רח' יחיאל 3, שוק תלפיות</li>
+            <li>החל מ־<strong>20.8.2026</strong> <span style="opacity:.7">[לאימות]</span></li>
+          </ul>
+          <a href="#register" class="btn btn-primary">להשארת פרטים</a>
+        </div>
+      </div>
+    </div>
+    <p class="levels-note reveal"><b>מתחילים · ממשיכים · מתקדמים</b> — יש קורס לכל רמה. לא בטוחים מה מתאים? <a href="#register">השאירו פרטים ונתייעץ.</a></p>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS — handwritten notes wall ============ -->
+<section class="section notes-section" id="reviews">
+  <div class="wrap">
+    <div class="head reveal" style="margin-inline:auto;text-align:center">
+      <span class="eyebrow" style="margin-inline:auto">כך כתבו תלמידים</span>
+      <h2>לא צילומי מסך — פתקים אמיתיים.</h2>
+      <p>מכתבים, פתקים ואפילו ציורים שתלמידים כתבו ונתנו לי לאורך השנים. כל אחד אמיתי, בכתב יד.</p>
+    </div>
+    <div class="notes-wall reveal">
+      <button class="note" style="--rot:-4deg" type="button"><img src="note1.jpg" alt="פתק תודה מעוטר בלבבות, בכתב יד" loading="lazy" /></button>
+      <button class="note" style="--rot:3deg" type="button"><img src="note2.jpg" alt="מכתב תודה בכתב יד" loading="lazy" /></button>
+      <button class="note" style="--rot:-2deg" type="button"><img src="note3.jpg" alt="כרטיס ברכה מתלמידה" loading="lazy" /></button>
+      <button class="note" style="--rot:4deg" type="button"><img src="note4.jpg" alt="פתק תודה בערבית" loading="lazy" /></button>
+      <button class="note" style="--rot:-3deg" type="button"><img src="note5.jpg" alt="דף ציורים של תלמיד" loading="lazy" /></button>
+      <button class="note" style="--rot:2deg" type="button"><img src="note6.jpg" alt="פתק תודה עם ציור מתנה" loading="lazy" /></button>
+      <button class="note" style="--rot:-5deg" type="button"><img src="note7.jpg" alt="מעטפה עם המילה أولبان בכתב יד" loading="lazy" /></button>
+      <button class="note" style="--rot:3deg" type="button"><img src="note8.jpg" alt="כרטיס תודה בכתב יד" loading="lazy" /></button>
+    </div>
+    <p class="notes-hint reveal">לחצו על פתק כדי להגדיל ולקרוא</p>
+  </div>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="פתק מוגדל">
+    <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="סגירה">✕</button>
+    <button class="lb-btn lb-nav lb-prev" id="lbPrev" type="button" aria-label="הפתק הקודם">›</button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="" />
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-nav lb-next" id="lbNext" type="button" aria-label="הפתק הבא">‹</button>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="head reveal" style="margin-inline:auto;text-align:center">
+      <span class="eyebrow" style="margin-inline:auto">שאלות נפוצות</span>
+      <h2>כל מה שכדאי לדעת לפני שמתחילים.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details open>
+        <summary>צריך ידע מוקדם בערבית?</summary>
+        <p>ממש לא. קורס המתחילים מתחיל מאפס — אותיות, מילים ראשונות ומשפטים פשוטים. יש קורס שמתאים לכל רמה.</p>
+      </details>
+      <details>
+        <summary>פרונטלי או אונליין?</summary>
+        <p>שניהם. קורס המתחילים מתקיים בזום, וקורס הממשיכים פרונטלי בחיפה. אם אתם מחוץ לאזור — אונליין נותן בדיוק את אותה חוויה.</p>
+      </details>
+      <details>
+        <summary>כמה זמן נמשך הקורס?</summary>
+        <p>15 מפגשים שבועיים, שעתיים כל אחד. בין המפגשים מקבלים סיכומים והקלטות לחזרה ולתרגול עצמי.</p>
+      </details>
+      <details>
+        <summary>כמה זה עולה?</summary>
+        <p>[לעדכן מחיר]. השאירו פרטים ואחזור אליכם עם כל המידע על העלות והמחזור הקרוב.</p>
+      </details>
+      <details>
+        <summary>אני לא בטוח.ה איזו רמה מתאימה לי.</summary>
+        <p>אין בעיה. השאירו פרטים, נדבר קצר בטלפון, ואמצא יחד איתכם את הקורס הנכון.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA + FORM ============ -->
+<section class="cta" id="register">
+  <div class="wrap section cta-grid">
+    <div class="reveal">
+      <h2>השאירו פרטים — ונחזור אליכם.</h2>
+      <p class="lead">מלאו את הטופס ונאד'יר יחזור אליכם בטלפון או במייל עם כל הפרטים על הקורס המתאים לכם. בלי התחייבות.</p>
+      <div class="wa-line">
+        <span>מעדיפים לדבר עכשיו?</span>
+        <!-- [לעדכן] מספר וואטסאפ -->
+        <a href="https://wa.me/972526805855" class="btn btn-wa" target="_blank" rel="noopener">וואטסאפ ישיר</a>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <!-- ============================================================
+           טופס Netlify Forms — נשמר אוטומטית ב-Netlify ללא שרת.
+           אחרי העלאה: Netlify → Forms → Form notifications →
+           הוסיפו את המייל של נאד'יר כדי לקבל כל ליד למייל.
+           ============================================================ -->
+      <form name="register" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm">
+        <input type="hidden" name="form-name" value="register" />
+        <p class="hp"><label>אל תמלאו: <input name="bot-field" /></label></p>
+
+        <div class="field">
+          <label for="name">שם מלא <span class="req">*</span></label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="phone">טלפון <span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="050-0000000" />
+        </div>
+        <div class="field">
+          <label for="email">אימייל</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="name@email.com" />
+        </div>
+        <div class="field">
+          <label for="course">איזה קורס מעניין אתכם?</label>
+          <select id="course" name="course">
+            <option value="מתחילים – אונליין">מתחילים — אונליין (זום)</option>
+            <option value="ממשיכים – חיפה">ממשיכים — פרונטלי (חיפה)</option>
+            <option value="מתקדמים">מתקדמים</option>
+            <option value="התייעצות">לא בטוח.ה — התייעצות</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">משהו שתרצו להוסיף? (לא חובה)</label>
+          <textarea id="msg" name="message" rows="2"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">שליחה</button>
+        <p class="form-note">הפרטים נשמרים אצל נאד'יר בלבד, ליצירת קשר חוזר.</p>
+      </form>
+
+      <div class="form-success" id="formSuccess" role="status">
+        <div class="v">✓</div>
+        <h3>תודה! קיבלתי את הפרטים.</h3>
+        <p style="color:var(--ink-soft)">נאד'יר יחזור אליכם בקרוב. בינתיים — מוזמנים לכתוב בוואטסאפ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" style="text-decoration:none">
+      <!-- logo ulban.jpg --><img src="logo.jpg" alt="לוגו אולבן" />
+      <span style="display:flex;flex-direction:column">
+        <b>אוּלְבַּן</b>
+        <span>ערבית פלסטינית מדוברת · חיפה ואונליין</span>
+      </span>
+    </a>
+    <nav class="f-links">
+      <!-- [לעדכן] קישורים -->
+      <a href="https://wa.me/972526805855" target="_blank" rel="noopener">וואטסאפ</a>
+      <a href="mailto:ulban6ravit@gmail.com">אימייל</a>
+      <a href="#register">הרשמה</a>
+    </nav>
+    <p class="copyright">© <span id="yr"></span> אוּלְבַּן · נאד'יר טאהא. נבנה באהבה לשפה.</p>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // form submit — works on Netlify; in preview it just shows the thank-you state
+  const form = document.getElementById('leadForm');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    const data = new URLSearchParams(new FormData(form)).toString();
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data})
+      .catch(()=>{})            // ignore network errors (e.g. in the preview)
+      .finally(()=>{
+        form.style.display='none';
+        document.getElementById('formSuccess').classList.add('show');
+        document.getElementById('formSuccess').scrollIntoView({behavior:'smooth', block:'center'});
+      });
+  });
+
+  // handwritten notes lightbox
+  (function(){
+    const lb=document.getElementById('lightbox');
+    if(!lb) return;
+    const lbImg=document.getElementById('lbImg');
+    const lbCap=document.getElementById('lbCap');
+    const notes=[...document.querySelectorAll('.notes-wall .note')];
+    let idx=0;
+    function show(i){
+      idx=(i+notes.length)%notes.length;
+      const img=notes[idx].querySelector('img');
+      lbImg.src=img.src; lbImg.alt=img.alt;
+      lbCap.textContent=(idx+1)+' / '+notes.length;
+    }
+    function open(i){ show(i); lb.classList.add('open'); document.body.style.overflow='hidden'; document.getElementById('lbClose').focus(); }
+    function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+    notes.forEach((n,i)=>n.addEventListener('click',()=>open(i)));
+    document.getElementById('lbClose').addEventListener('click',close);
+    document.getElementById('lbPrev').addEventListener('click',()=>show(idx-1));
+    document.getElementById('lbNext').addEventListener('click',()=>show(idx+1));
+    lb.addEventListener('click',e=>{ if(e.target===lb) close(); });
+    document.addEventListener('keydown',e=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key==='Escape') close();
+      else if(e.key==='ArrowRight') show(idx-1);   // RTL: right = previous
+      else if(e.key==='ArrowLeft') show(idx+1);
+    });
+  })();
+</script>
+</body>
+</html>
