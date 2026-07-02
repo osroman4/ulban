@@ -303,6 +303,9 @@
   .field textarea{resize:vertical;min-height:70px}
   form .btn{width:100%;margin-top:.4rem}
   .form-note{font-size:.85rem;color:var(--ink-soft);text-align:center;margin:.9rem 0 0}
+  .field input.invalid,.field select.invalid,.field textarea.invalid{border-color:var(--clay);background:#fff6f3}
+  .field-error{display:none;color:var(--clay);font-size:.82rem;font-weight:600;margin-top:.35rem}
+  .field-error.show{display:block}
   .hp{position:absolute;left:-9999px}
   .form-success{display:none;text-align:center;padding:1.5rem 0}
   .form-success.show{display:block}
@@ -617,21 +620,24 @@
            אחרי העלאה: Netlify → Forms → Form notifications →
            הוסיפו את המייל של נאד'יר כדי לקבל כל ליד למייל.
            ============================================================ -->
-      <form name="register" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm">
+      <form name="register" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm" novalidate>
         <input type="hidden" name="form-name" value="register" />
         <p class="hp"><label>אל תמלאו: <input name="bot-field" /></label></p>
 
         <div class="field">
           <label for="name">שם מלא <span class="req">*</span></label>
           <input id="name" name="name" type="text" required autocomplete="name" />
+          <span class="field-error" id="nameErr">נא למלא שם</span>
         </div>
         <div class="field">
           <label for="phone">טלפון <span class="req">*</span></label>
-          <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="050-0000000" />
+          <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="050-1234567" />
+          <span class="field-error" id="phoneErr">מספר טלפון ישראלי לא תקין (למשל 050-1234567)</span>
         </div>
         <div class="field">
           <label for="email">אימייל</label>
           <input id="email" name="email" type="email" autocomplete="email" placeholder="name@email.com" />
+          <span class="field-error" id="emailErr">כתובת אימייל לא תקינה (למשל name@email.com)</span>
         </div>
         <div class="field">
           <label for="course">איזה קורס מעניין אתכם?</label>
@@ -652,8 +658,8 @@
 
       <div class="form-success" id="formSuccess" role="status">
         <div class="v">✓</div>
-        <h3>תודה! קיבלתי את הפרטים.</h3>
-        <p style="color:var(--ink-soft)">נאד'יר יחזור אליכם בקרוב. בינתיים — מוזמנים לכתוב בוואטסאפ.</p>
+        <h3>שֻכְּרַן כְּתִיר — אחזור אליך בהקדם 🙏</h3>
+        <p style="color:var(--ink-soft)">רוצה כבר עכשיו? אפשר גם בוואטסאפ.</p>
       </div>
     </div>
   </div>
@@ -691,10 +697,51 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // form submit — works on Netlify; in preview it just shows the thank-you state
+  // form validation + submit — works on Netlify; in preview it shows the thank-you state
   const form = document.getElementById('leadForm');
+  const f = {
+    name:  document.getElementById('name'),
+    phone: document.getElementById('phone'),
+    email: document.getElementById('email')
+  };
+  const err = {
+    name:  document.getElementById('nameErr'),
+    phone: document.getElementById('phoneErr'),
+    email: document.getElementById('emailErr')
+  };
+
+  function normalizePhone(v){
+    let d = v.replace(/[^\d+]/g,'').replace(/^\+/,'').replace(/^00/,'');
+    if(d.indexOf('972')===0) d = '0'+d.slice(3);   // +972 / 972 -> local 0
+    return d;
+  }
+  // Israeli mobile (05x + 8) or landline (0[2-489] + 7)
+  const isPhone = v => /^0(5\d{8}|[2-489]\d{7})$/.test(normalizePhone(v));
+  const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+
+  function setErr(field, show){
+    f[field].classList.toggle('invalid', show);
+    err[field].classList.toggle('show', show);
+  }
+  function checkName(){ const bad = !f.name.value.trim(); setErr('name', bad); return !bad; }
+  function checkPhone(){ const bad = !isPhone(f.phone.value); setErr('phone', bad); return !bad; }
+  function checkEmail(){ const bad = f.email.value.trim() !== '' && !isEmail(f.email.value); setErr('email', bad); return !bad; }
+
+  // clear the error as soon as a field becomes valid while typing
+  f.name.addEventListener('input', ()=>{ if(f.name.value.trim()) setErr('name',false); });
+  f.phone.addEventListener('input', ()=>{ if(isPhone(f.phone.value)) setErr('phone',false); });
+  f.email.addEventListener('input', ()=>{ if(f.email.value.trim()==='' || isEmail(f.email.value)) setErr('email',false); });
+  f.phone.addEventListener('blur', checkPhone);
+  f.email.addEventListener('blur', checkEmail);
+
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
+    const okName = checkName(), okPhone = checkPhone(), okEmail = checkEmail();
+    if(!(okName && okPhone && okEmail)){
+      const first = !okName ? f.name : (!okPhone ? f.phone : f.email);
+      first.focus();
+      return;
+    }
     const data = new URLSearchParams(new FormData(form)).toString();
     fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data})
       .catch(()=>{})            // ignore network errors (e.g. in the preview)
