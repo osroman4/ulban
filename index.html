@@ -366,9 +366,12 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
   }
   .mark.lit{background-size:100% 42%}
 
-  /* doorway reveal for arches */
-  .door{clip-path:inset(0 46% 0 46%);transition:clip-path .9s cubic-bezier(.22,.61,.36,1)}
-  .door.in{clip-path:inset(0 0 0 0)}
+  /* doorway reveal for arches — fail-safe: default fully visible, animate only on reveal */
+  .door.in{animation:doorOpen .9s cubic-bezier(.22,.61,.36,1)}
+  @keyframes doorOpen{
+    from{clip-path:inset(0 46% 0 46%);-webkit-clip-path:inset(0 46% 0 46%)}
+    to{clip-path:inset(0 0 0 0);-webkit-clip-path:inset(0 0 0 0)}
+  }
 
   /* arcade line-draw */
   .arcade path{stroke-dasharray:3000;stroke-dashoffset:3000;transition:stroke-dashoffset 1.7s ease}
@@ -427,7 +430,7 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
     .reveal{opacity:1;transform:none;transition:none}
     .btn,.pillar,.course{transition:none}
     .mark{background-size:100% 42%}
-    .door{clip-path:none}
+    .door.in{animation:none}
     .arcade path{stroke-dashoffset:0;transition:none}
     .input-wrap::after,.mobile-cta,.term::after{transition:none}
   }
