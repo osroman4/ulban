@@ -359,12 +359,12 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
   /* ---------- micro-interactions ---------- */
   /* marker-sweep highlight */
   .mark{
-    background-image:linear-gradient(120deg,rgba(224,161,46,.55),rgba(224,161,46,.5));
-    background-repeat:no-repeat;background-position:right bottom;background-size:0% 42%;
-    padding:0 .12em;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+    background-image:linear-gradient(rgba(224,161,46,.5),rgba(224,161,46,.5));
+    background-repeat:no-repeat;background-position:right center;background-size:0% 1.05em;
+    padding:.04em .18em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
     transition:background-size .8s cubic-bezier(.22,.61,.36,1);
   }
-  .mark.lit{background-size:100% 42%}
+  .mark.lit{background-size:100% 1.05em}
 
   /* doorway reveal for arches — fail-safe: default fully visible, animate only on reveal */
   .door.in{animation:doorOpen .9s cubic-bezier(.22,.61,.36,1)}
@@ -429,7 +429,7 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
     *{scroll-behavior:auto !important}
     .reveal{opacity:1;transform:none;transition:none}
     .btn,.pillar,.course{transition:none}
-    .mark{background-size:100% 42%}
+    .mark{background-size:100% 1.05em}
     .door.in{animation:none}
     .arcade path{stroke-dashoffset:0;transition:none}
     .input-wrap::after,.mobile-cta,.term::after{transition:none}
