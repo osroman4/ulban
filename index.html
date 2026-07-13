@@ -85,7 +85,11 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
   }
 
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  /* overflow-x:clip on the root guards against any element (off-screen honeypot,
+     wide tooltip, sub-pixel rounding) creating a horizontally pannable/zoomable
+     blank area on mobile. clip — unlike hidden — does NOT create a scroll
+     container, so the sticky header keeps working. */
+  html{scroll-behavior:smooth;overflow-x:clip}
   body{
     margin:0;
     background:var(--paper);
@@ -94,7 +98,8 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
     font-size:clamp(16px,1.05vw,18px);
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    overflow-x:clip;
+    max-width:100%;
   }
   h1,h2,h3{font-family:'Frank Ruhl Libre',Georgia,serif;line-height:1.12;font-weight:900;margin:0}
   .ar{font-family:'Amiri',serif;font-weight:700}
@@ -328,7 +333,11 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
   .field input.invalid,.field select.invalid,.field textarea.invalid{border-color:var(--clay);background:#fff6f3}
   .field-error{display:none;color:var(--clay);font-size:.82rem;font-weight:600;margin-top:.35rem}
   .field-error.show{display:block}
-  .hp{position:absolute;left:-9999px}
+  /* honeypot — hidden with zero layout footprint (screen-reader-only pattern).
+     The old `left:-9999px` pushed a 9999px-wide box off the left edge, which on
+     mobile could be panned/zoomed into as blank space. This keeps the field in
+     the DOM for Netlify's spam trap without affecting layout. */
+  .hp{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   .form-success{display:none;text-align:center;padding:1.5rem 0}
   .form-success.show{display:block}
   .form-success .v{width:64px;height:64px;border-radius:50%;background:var(--turq);color:#fff;display:grid;place-items:center;font-size:2rem;margin:0 auto 1rem}
@@ -510,7 +519,7 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
       <div class="pillar reveal">
         <div class="num">١</div>
         <h3>למידה<span class="ar term" data-tip="ta‘allum · למידה" tabindex="0">تَعَلُّم</span></h3>
-        <p>מפגש שבועי בן שעתיים. לפי הרמה — דקדוק ותחביר, זמני פועל ושורשיהם, צורות ביטויים ומושגים ועוד ועוד והרבה הרבה המדוברים בשפה הערבית הפלסטינית המדוברת מ-גַ'בַּלְ אִשְ-שִיחְ' (הר החרמון) בצפון-צפון ועד אִם אִלְ-רִשְרָאשְ (אילת) בדרום-דרום.</p>
+        <p>מפגש שבועי בן שעתיים. לפי הרמה — דקדוק ותחביר, זמני פועל ושורשיהם, צורות ביטויים ומושגים ועוד ועוד והרבה הרבה המדוברים בשפה הערבית הפלסטינית המדוברת מ-גַ'בַּלְ אִשְ-שִיחְ' (הר החרמון) בצפון-צפון ועד אִם אִלְ-רִשְרָאשְ (אילת) בדרום-דרום.</p>
       </div>
       <div class="pillar reveal">
         <div class="num">٢</div>
@@ -636,7 +645,7 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
       </details>
       <details>
         <summary>פרונטלי או אונליין?</summary>
-        <p>פרונטלי מתקיימים בחִיפָא והצפון \ יָאפָא ותַלְ-אַבִּיבְּ 
+        <p>פרונטלי מתקיימים בחִיפָא והצפון \ יָאפָא ותַלְ-אַבִּיבְּ 
 אם אתם מחוץ לאזור — אונליין נותן בדיוק את אותה חוויה.</p>
       </details>
       <details>
