@@ -763,7 +763,7 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
         </div>
         <div class="field">
           <label for="course">איזה קורס מעניין אתכם?</label>
-          <select id="course" name="course">
+                    <select id="course" name="course">
             <option value="מתחילים – אונליין – 2.8.26 – 18:30">מתחילים · אונליין · 2.8.26 · 18:30</option>
             <option value="מתחילים – אונליין – 26.8.26 – 10:00">מתחילים · אונליין · 26.8.26 · 10:00</option>
             <option value="ממשיכים – אונליין – 26.8.26 – 18:30">ממשיכים · אונליין · 26.8.26 · 18:30</option>
