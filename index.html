@@ -746,11 +746,22 @@ src="https://www.facebook.com/tr?id=1588656742688538&ev=PageView&noscript=1"
           <span class="field-error" id="emailErr">כתובת אימייל לא תקינה (למשל name@email.com)</span>
         </div>
         <div class="field">
-          <label for="course">איזה קורס מעניין אתכם?</label>
+          <label for="course">איזו רמה מתאימה לכם?</label>
           <select id="course" name="course">
-            <option value="מתחילים – אונליין – 10.9.26 – 18:30-20:30">מתחילים · אונליין · 10.9.26 · 18:30–20:30</option>
-            <option value="מתחילים – אונליין – 30.9.26 – 9:30-11:30">מתחילים · אונליין · 30.9.26 · 9:30–11:30</option>
+            <option value="" disabled selected>בחרו רמה</option>
+            <option value="מתחילים – אונליין">מתחילים · אונליין</option>
+            <option value="ממשיכים – אונליין">ממשיכים · אונליין</option>
             <option value="התייעצות">לא בטוח.ה — התייעצות</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="day">באיזה יום את.ה פנוי.ה ללמוד?</label>
+          <select id="day" name="day">
+            <option value="" disabled selected>בחרו יום</option>
+            <option value="יום א׳ – 18:30">יום א׳ | 18:30</option>
+            <option value="יום ב׳ – 10:00">יום ב׳ | 10:00</option>
+            <option value="יום ד׳ – 18:30">יום ד׳ | 18:30</option>
+            <option value="יום ה׳ – 10:00 / 18:30">יום ה׳ | 10:00 / 18:30</option>
           </select>
         </div>
         <div class="field">
